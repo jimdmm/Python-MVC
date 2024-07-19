@@ -12,6 +12,13 @@ class userView:
         self.user_controller.create_user(name, email, phone)
 
     def list(self):
-        self.user_controller.list_all_users()
+        users = self.user_controller.list_all_users()
         
+        if len(users) == 0:
+            print("Sem usuário cadastrado")
+            return
+
+        for user in users:
+            msg = f"{user.get_name()}, {user.get_email()}, {user.get_phone()}"
+            print(msg)
         
